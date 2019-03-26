@@ -67,18 +67,22 @@ class YoutubeAPI:
                 ])
         return extract_list
 
-    def get_comment_data(self):
+    def get_comment_data(self, get_dt=False):
         '''
         Description::
             コメント一覧を取得する（コメントの返信は含まない）
         Retern::
-            動画を公開した日付（YYYY-MM-DD）
+            最も評価が高い日付(YYYY-MM-DD)
         Output::
             output_comment.tsv
             カラム：dt,publishedAt,id,videoId,authorDisplayName,authorChannelId,likeCount,totalReplyCount,textDisplay
             ※[reference](https://developers.google.com/youtube/v3/docs/comments)
+        Param::
+            get_dt:
+                True / False(デフォルト)
+                最も評価が高い日付(YYYY-MM-DD)を取得するかどうか
 
-        Usage::
+        Sample::
         >>> import YoutubeAPI
         >>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
         >>> config_filename = 'config.ini'
@@ -109,9 +113,10 @@ class YoutubeAPI:
             except Exception:
                 break
         pd.DataFrame(extract_list).to_csv(os.getcwd() + '/output_comment.tsv', sep='\t', index=False, header=False)
-        return extract_list[0][0]
+        if get_dt:
+            return extract_list[0][0]
 
-    def get_video_data(self):
+    def get_video_data(self, get_dt=False):
         '''
         Description::
             動画の基礎数値
@@ -121,8 +126,12 @@ class YoutubeAPI:
             output_video.tsv
             カラム：dt,publishedAt,channelId,channelTitle,videoId,title,thumbnails,tags,viewCount,likeCount,dislikeCount,favoriteCount,commentCount
             ※[reference](https://developers.google.com/youtube/v3/docs/videos)
+        Param::
+            get_dt:
+                True / False(デフォルト)
+                動画公開日(YYYY-MM-DD)を取得する
 
-        Usage::
+        Sample::
         >>> import YoutubeAPI
         >>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
         >>> config_filename = 'config.ini'
@@ -139,7 +148,8 @@ class YoutubeAPI:
         except Exception:
             pass
         pd.DataFrame(extract_list).to_csv(os.getcwd() +'/output_video.tsv', sep='\t', index=False, header=False)
-        return extract_list[0][0]
+        if get_dt:
+            return extract_list[0][0]
 
 if __name__ == '__main__':
     import doctest
