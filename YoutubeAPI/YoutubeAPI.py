@@ -72,7 +72,7 @@ class YoutubeAPI:
         Description::
             コメント一覧を取得する（コメントの返信は含まない）
         Retern::
-            最も評価が高い日付(YYYY-MM-DD)
+            動画を公開した日付（YYYY-MM-DD）
         Output::
             output_comment.tsv
             カラム：dt,publishedAt,id,videoId,authorDisplayName,authorChannelId,likeCount,totalReplyCount,textDisplay
@@ -80,7 +80,7 @@ class YoutubeAPI:
         Param::
             get_dt:
                 True / False(デフォルト)
-                最も評価が高い日付(YYYY-MM-DD)を取得するかどうか
+                動画公開日(YYYY-MM-DD)を取得する
 
         Sample::
         >>> import YoutubeAPI
@@ -113,7 +113,8 @@ class YoutubeAPI:
                 break
         pd.DataFrame(extract_list).to_csv(os.getcwd() + '/output_comment.tsv', sep='\t', index=False, header=False)
         if get_dt:
-            return extract_list[0][0]
+            response = self.get_api_requests('videos')
+            return response['items'][0]['snippet']['publishedAt'][:10]
 
     def get_video_data(self, get_dt=False):
         '''

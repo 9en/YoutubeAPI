@@ -19,7 +19,7 @@ pip install git+https://github.com/9en/YoutubeAPI
 * Param::
     * get_dt:
         * True / False(デフォルト)
-        * 最も評価が高い日付(YYYY-MM-DD)を取得するかどうか
+        * 動画公開日(YYYY-MM-DD)を取得する
 * Output:
     * ファイル名：output_comment.tsv
     * カレントディレクトに出力する
