@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('README.md') as f:
     readme = f.read()
@@ -18,6 +18,7 @@ setup(
     python_requires='>=3.4',
     install_requires=['configparser', 'requests', 'pandas'],
     url='https://github.com/9en/YoutubeAPI',
-    license=license
+    license=license,
+    packages=find_packages()
 )
 
