@@ -98,7 +98,6 @@ class YoutubeAPI:
         extract 7 page (100comment/1page)
         extract 8 page (100comment/1page)
         extract 9 page (100comment/1page)
-        '2019-03-25'
         '''
         extract_list = []
         kind = 'commentThreads'
@@ -137,7 +136,6 @@ class YoutubeAPI:
         >>> config_filename = 'config.ini'
         >>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename)
         >>> yt.get_video_data()
-        '2019-03-25'
         '''
         extract_list = []
         kind = 'videos'

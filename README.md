@@ -16,6 +16,10 @@ pip install git+https://github.com/9en/YoutubeAPI
     * コメント一覧を取得する（コメントの返信は含まない）
 * Retern:
     * 動画を公開した日付（YYYY-MM-DD）
+* Param::
+    * get_dt:
+        * True / False(デフォルト)
+        * 最も評価が高い日付(YYYY-MM-DD)を取得するかどうか
 * Output:
     * ファイル名：output_comment.tsv
     * カレントディレクトに出力する
@@ -30,7 +34,7 @@ pip install git+https://github.com/9en/YoutubeAPI
         * textDisplay
 
 ```
-Usage::
+Sample::
 >>> import YoutubeAPI
 >>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
 >>> config_filename = 'config.ini'
@@ -54,6 +58,10 @@ extract 9 page (100comment/1page)
     * 動画の基礎数値
 * Retern:
     * 動画を公開した日付（YYYY-MM-DD）
+* Param::
+    * get_dt:
+        * True / False(デフォルト)
+        * 動画公開日(YYYY-MM-DD)を取得する
 * Output:
     * ファイル名：output_video.tsv
     * カレントディレクトに出力する
@@ -73,7 +81,7 @@ extract 9 page (100comment/1page)
         * commentCount
 
 ```
-Usage::
+Sample::
 >>> import YoutubeAPI
 >>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
 >>> config_filename = 'config.ini'
