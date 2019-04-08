@@ -38,7 +38,7 @@ Sample::
 >>> import YoutubeAPI
 >>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
 >>> config_filename = 'config.ini'
->>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename)
+>>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename, token)
 >>> yt.get_comment_data()
 extract 0 page (100comment/1page)
 extract 1 page (100comment/1page)
