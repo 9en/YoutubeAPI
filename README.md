@@ -85,7 +85,7 @@ Sample::
 >>> import YoutubeAPI
 >>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
 >>> config_filename = 'config.ini'
->>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename)
+>>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename, token)
 >>> yt.get_video_data()
 ```
 
@@ -96,14 +96,12 @@ Sample::
 URL: https://www.googleapis.com/youtube/v3/
 
 [commentThreads]
-key: <APIトークン>
 part: snippet
 order: relevance
 textFormat: plaintext
 maxResults: 100
 
 [videos]
-key: <APIトークン>
 part: snippet,statistics
 ```
 

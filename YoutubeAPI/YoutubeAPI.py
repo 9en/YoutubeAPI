@@ -16,10 +16,12 @@ class YoutubeAPI:
         youtubeを再生するURL
     :param config_filename
         設定ファイル名を指定する
+    :param token
+        youtubeのトークン
     Usage::
     >>> import YoutubeAPI
     '''
-    def __init__(self, youtube_url, config_filename):
+    def __init__(self, youtube_url, config_filename, token):
         self.VIDEOID = youtube_url.split('=')[1]
         cfgparser = configparser.ConfigParser()
         cfgparser.optionxform = str
@@ -31,6 +33,8 @@ class YoutubeAPI:
         self.PARAM['videos'] = dict(cfgparser.items('videos'))
         self.PARAM['videos']['id'] = self.VIDEOID
         self.PARAM['commentThreads']['videoId'] = self.VIDEOID
+        self.PARAM['commentThreads']['key'] = token
+        self.PARAM['videos']['key'] = token
 
     def get_api_requests(self, kind, token={}):
         return requests.get(self.API_URL + kind, params={**self.PARAM[kind], **token}).json()
@@ -47,7 +51,7 @@ class YoutubeAPI:
                     items['snippet']['topLevelComment']['snippet']['authorChannelId']['value'],
                     items['snippet']['topLevelComment']['snippet'].get('likeCount',0),
                     items['snippet'].get('totalReplyCount',0),
-                    items['snippet']['topLevelComment']['snippet']['textDisplay'].replace('\n',' ').replace('\t',' '),
+                    items['snippet']['topLevelComment']['snippet']['textDisplay'].replace('\n',' ').replace('\t',' ').replace('\r\n',' '),
                 ])
             elif kind == 'videos':
                 extract_list.append([
