@@ -36,9 +36,9 @@ pip install git+https://github.com/9en/YoutubeAPI
 ```
 Sample::
 >>> import YoutubeAPI
->>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
+>>> video_id = 'SjQaPt68o0M'
 >>> config_filename = 'config.ini'
->>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename, token)
+>>> yt = YoutubeAPI.YoutubeAPI(video_id, config_filename, token)
 >>> yt.get_comment_data()
 extract 0 page (100comment/1page)
 extract 1 page (100comment/1page)
@@ -83,9 +83,9 @@ extract 9 page (100comment/1page)
 ```
 Sample::
 >>> import YoutubeAPI
->>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
+>>> video_id = 'SjQaPt68o0M'
 >>> config_filename = 'config.ini'
->>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename, token)
+>>> yt = YoutubeAPI.YoutubeAPI(video_id, config_filename, token)
 >>> yt.get_video_data()
 ```
 

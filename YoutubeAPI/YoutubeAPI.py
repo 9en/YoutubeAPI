@@ -12,8 +12,8 @@ class YoutubeAPI:
     '''
     Description::
         YoutubeAPIを利用してデータを取得する
-    :param youtube_url:
-        youtubeを再生するURL
+    :param video_id:
+        youtubeの動画ID
     :param config_filename
         設定ファイル名を指定する
     :param token
@@ -21,8 +21,8 @@ class YoutubeAPI:
     Usage::
     >>> import YoutubeAPI
     '''
-    def __init__(self, youtube_url, config_filename, token):
-        self.VIDEOID = youtube_url.split('=')[1]
+    def __init__(self, video_id, config_filename, token):
+        self.VIDEOID = video_id
         cfgparser = configparser.ConfigParser()
         cfgparser.optionxform = str
         cfgparser.read(config_filename, 'UTF-8')
@@ -88,9 +88,9 @@ class YoutubeAPI:
 
         Sample::
         >>> import YoutubeAPI
-        >>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
+        >>> video_id = 'SjQaPt68o0M'
         >>> config_filename = 'config.ini'
-        >>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename)
+        >>> yt = YoutubeAPI.YoutubeAPI(video_id, config_filename)
         >>> yt.get_comment_data()
         extract 0 page (100comment/1page)
         extract 1 page (100comment/1page)
@@ -137,9 +137,9 @@ class YoutubeAPI:
 
         Sample::
         >>> import YoutubeAPI
-        >>> youtube_url = 'https://www.youtube.com/watch?v=SjQaPt68o0M'
+        >>> video_id = 'SjQaPt68o0M'
         >>> config_filename = 'config.ini'
-        >>> yt = YoutubeAPI.YoutubeAPI(youtube_url, config_filename)
+        >>> yt = YoutubeAPI.YoutubeAPI(video_id, config_filename)
         >>> yt.get_video_data()
         '''
         extract_list = []
