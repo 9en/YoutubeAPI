@@ -54,6 +54,13 @@ class YoutubeAPI:
                     items['snippet']['topLevelComment']['snippet']['textDisplay'].replace('\n',' ').replace('\t',' ').replace('\r\n',' '),
                 ])
             elif kind == 'videos':
+                if 'maxres' in items['snippet']['thumbnails']:
+                    snippet_url = items['snippet']['thumbnails']['maxres']['url']
+                elif 'standard' in items['snippet']['thumbnails']:
+                    snippet_url = items['snippet']['thumbnails']['standard']['url']
+                elif 'default' in items['snippet']['thumbnails']:
+                    snippet_url = items['snippet']['thumbnails']['default']['url']
+
                 extract_list.append([
                     items['snippet']['publishedAt'][:10],
                     items['snippet']['publishedAt'],
@@ -61,7 +68,7 @@ class YoutubeAPI:
                     items['snippet']['channelTitle'].replace('\t', ' '),
                     self.VIDEOID,
                     items['snippet']['title'].replace('\t', ' '),
-                    items['snippet']['thumbnails']['maxres']['url'],
+                    snippet_url,
                     ','.join(items['snippet']['tags']).replace('\t', ' '),
                     items['statistics'].get('viewCount',0),
                     items['statistics'].get('likeCount',0),
